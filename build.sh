@@ -26,7 +26,7 @@ fi
 
 if [ ! -d AnyKernel ]
 then
-git clone https://gitlab.com/hiteshkamble920/AnyKernel3.git -b rm1 --depth=1 AnyKernel
+git clone https://gitlab.com/hiteshkamble920/AnyKernel3 -b rm1 --depth=1 AnyKernel
 fi
 
 echo "Done"
