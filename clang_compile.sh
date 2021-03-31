@@ -10,7 +10,7 @@ echo "Cloning dependencies if they don't exist...."
 
 if [ ! -d clang ]
 then
-git clone --depth=1 https://github.com/CPH1859/prebuilt_clang-6.0.2 clang
+git clone --depth=1 https://github.com/crdroidmod/android_prebuilts_clang_host_linux-x86_clang-5407736 clang
 
 fi
 
@@ -31,9 +31,6 @@ fi
 
 echo "Done"
 
-echo "Cleaning old files in AnyKernel directory...."
-rm AnyKernel/Stock* > /dev/null
-rm AnyKernel/Image.gz-dtb > /dev/null
 
 KERNEL_DIR=$(pwd)
 IMAGE="${KERNEL_DIR}/out/arch/arm64/boot/Image.gz-dtb"
@@ -44,13 +41,6 @@ export KBUILD_COMPILER_STRING="$(${KERNEL_DIR}/clang/bin/clang --version | head 
 export ARCH=arm64
 export KBUILD_BUILD_USER=ayush
 export KBUILD_BUILD_HOST=gcp
-
-echo "Cleaning old Image.gz-dtb if it exists......"
-if [-f "$IMAGE"]
-then
-rm $IMAGE
-fi
-
 
 # Compile plox
 function compile() {
@@ -65,7 +55,7 @@ function compile() {
                     CROSS_COMPILE_ARM32=arm-linux-androideabi-
    echo -e "${RST}"
 SUCCESS=$?
-	if [ $SUCCESS -eq 0 ] && [ -f "$IMAGE" ]
+	if [ $SUCCESS -eq 0 ]
         	then
 		echo -e "${GRN}"
 		echo "------------------------------------------------------------"
@@ -95,7 +85,7 @@ function zipping() {
 }
 compile
 
-if [ $SUCCESS -eq 0 ] && [ -f "$IMAGE" ]
+if [ $SUCCESS -eq 0 ]
 then
 	zipping
 fi
