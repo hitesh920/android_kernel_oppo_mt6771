@@ -26,7 +26,7 @@ fi
 
 if [ ! -d AnyKernel ]
 then
-git clone https://gitlab.com/Baibhab34/AnyKernel3.git -b rm1 --depth=1 AnyKernel
+git clone https://gitlab.com/hiteshkamble920/AnyKernel3.git -b rm1 --depth=1 AnyKernel
 fi
 
 echo "Done"
@@ -39,7 +39,7 @@ BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 PATH="${KERNEL_DIR}/clang/bin:${KERNEL_DIR}/gcc/bin:${KERNEL_DIR}/gcc32/bin:${PATH}"
 export KBUILD_COMPILER_STRING="$(${KERNEL_DIR}/clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g')"
 export ARCH=arm64
-export KBUILD_BUILD_USER=ayush
+export KBUILD_BUILD_USER=Ghost
 export KBUILD_BUILD_HOST=gcp
 
 # Compile plox
@@ -78,9 +78,9 @@ function zipping() {
     echo -e "${YELLOW}"
     echo "Creating a flashable zip....."
     cd AnyKernel || exit 1
-    zip -r9 Stock-CPH1859-${TANGGAL}.zip * > /dev/null 2>&1
+    zip -r9 GhostKernel-CPH1859-${TANGGAL}.zip * > /dev/null 2>&1
     cd ..
-    echo "Zip stored at AnyKernel/Stock-CPH1859-${TANGGAL}.zip"
+    echo "Zip stored at AnyKernel/GhostKernel-CPH1859-${TANGGAL}.zip"
     echo -e "${RST}"
 }
 compile
